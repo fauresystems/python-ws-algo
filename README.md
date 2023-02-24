@@ -6,8 +6,9 @@ Algorithm for Python speed analysis and alternatives benchmarking
     * surface and weight of plates
     * compute for each plate
     * compute for plate families
-2. code in SQL (SQLite)
-3. code with Pandas
-4. code with Numpy arrays
-5. code with pure Python objects (or dicts)
-6. code with Cython
+2. create results with naive Pandas algorithm
+3. code in SQL (SQLite)
+4. code with Pandas optimized algorithm
+5. code with Numpy arrays
+6. code with pure Python objects (or dicts)
+7. code with Cython
