@@ -133,3 +133,6 @@ dmypy.json
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/python-ws-algo.iml
 /.idea/vcs.xml
+/.idea/dataSources.xml
+/.idea/deployment.xml
+/.idea/inspectionProfiles/Project_Default.xml

@@ -2,10 +2,10 @@
 Algorithm for Python speed analysis and alternatives benchmarking
 
 ## Ongoing progress
-1. create dataset in CSV files
-    * surface and weight of plates
-    * compute for each plate
-    * compute for plate families
+1. create dataset in SQLite3 file
+    * width, length and weight of plates
+    * compute surface and weight for each plate
+    * compute average weight for plate families
 2. create results with naive Pandas algorithm
 3. code in SQL (SQLite)
 4. code with Pandas optimized algorithm
