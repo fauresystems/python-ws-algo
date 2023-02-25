@@ -20,6 +20,14 @@ class PlatesDataset:
         cls.df['rand1'] = rng.uniform(0, 1, 10000)
         cls.df['density'] = cls.df['rand1'].apply(lambda x: 1 + 1 * x)
         cls.df.drop(['rand1'], axis=1, inplace=True)
+        bins = np.arange(15, 30+3, 3)
+        labels = ["L{0}".format(i + 1) for i in range(len(bins) - 1)]
+        cls.df['catL'] = pd.cut(cls.df['length'], bins=bins, labels=labels)
+        bins = np.arange(1, 2+0.25, 0.25)
+        labels = ["D{0}".format(i + 1) for i in range(len(bins) - 1)]
+        cls.df['catD'] = pd.cut(cls.df['density'], bins=bins, labels=labels)
+        cls.df['surface'] = cls.df['width'] * cls.df['length']
+        cls.df['weight'] = cls.df['surface'] * cls.df['density']
 
     @classmethod
     def create_database(cls, file=DBFILE, force_create=False):
