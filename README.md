@@ -6,8 +6,7 @@ Algorithm for Python speed analysis and alternatives benchmarking
     * width, length and weight of plates
     * distribute plates in families of length and density
     * compute surface and weight for each plate
-    * compute average weight for plate families
-2. create results with naive Pandas algorithm
+    * compute average surface and weight for plate families
 3. code in SQL (SQLite)
 4. code with Pandas optimized algorithm
 5. code with Numpy arrays
