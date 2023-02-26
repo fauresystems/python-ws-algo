@@ -5,14 +5,14 @@ import numpy as np
 
 
 class PlatesDataset:
-    DBFILE = 'dataset.sqlite'
-    RNDSEED = 12345
+    DB_FILE = 'dataset.sqlite'
+    RND_SEED = 12345
     plates = None
     family_D = None
     family_L = None
 
     @classmethod
-    def create_dataset(cls, seed=RNDSEED):
+    def create_dataset(cls, seed=RND_SEED):
         cls.plates = pd.DataFrame(dtype=np.float64)
         rng = np.random.Generator(np.random.PCG64(seed))
         cls.plates['rand1'] = rng.uniform(0, 1, 10000)
@@ -35,10 +35,10 @@ class PlatesDataset:
                                                            'catL': 'count'}, axis="columns")
         cls.family_D = cls.plates.groupby(['catD']).aggregate({'surface': ['min', 'max', 'mean', 'sum'],
                                                            'weight': ['min', 'max', 'mean', 'sum'],
-                                                           'catL': 'count'}, axis="columns")
+                                                           'catD': 'count'}, axis="columns")
 
     @classmethod
-    def create_database(cls, file=DBFILE, force_create=False):
+    def create_database(cls, file=DB_FILE, force_create=False):
         if cls.plates is None:
             cls.create_dataset()
         if force_create or not exists(file):
