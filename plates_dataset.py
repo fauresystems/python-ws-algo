@@ -7,6 +7,13 @@ import numpy as np
 
 
 class Plate(MutableMapping):
+    index = None
+    width = None
+    length = None
+    density = None
+    catD = None
+    catL = None
+
     def __init__(self, *args, **kwargs):
         self.__dict__.update(*args, **kwargs)
 
@@ -29,7 +36,8 @@ class Plate(MutableMapping):
         return f'{self.__class__.__name__} #{self.index} ({self.catD}: {self.width:.2f} x {self.length:.2f})'
 
     def __repr__(self):
-        return f'{self.__class__.__name__}> #{self.index} (width {self.width}, length {self.length}, density {self.density})'
+        return f'{self.__class__.__name__}> #{self.index} (width {self.width}, length {self.length}, ' \
+               f'density {self.density})'
 
 
 class PlatesDataset:
@@ -86,6 +94,6 @@ class PlatesDataset:
     def load_input_objects(cls, file=DB_FILE):
         con = sqlite3.connect(file)
         cls.plates = pd.read_sql('SELECT * FROM plates', con)
-        plates =  cls.plates[
+        plates = cls.plates[
             ['index', 'width', 'length', 'density', 'catL', 'catD']].to_dict(orient='records', into=Plate)
         return plates
