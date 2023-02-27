@@ -4,8 +4,8 @@ import platform
 from plates_dataset import PlatesDataset
 
 
-def startup():
-    PlatesDataset.create_database(force_create=True)
+def startup(force_create=False):
+    PlatesDataset.create_database(force_create)
     print(PlatesDataset.plates.describe())
     print(PlatesDataset.plates.memory_usage(deep=True))
     PlatesDataset.plates.info(verbose=True)
@@ -18,7 +18,11 @@ def startup():
 
 
 if __name__ == '__main__':
-    print('Python', platform.python_version(), 'running on', platform.system(), platform.release(), f'({platform.machine()})')
-    startup()
+    print('Python', platform.python_version(),
+          'running on', platform.system(), platform.release(), f'({platform.machine()})')
+    startup(force_create=False)
     # run and timeit algo SQL
+    plates = PlatesDataset.load_input_dataframe()
+    print()
+    plates = PlatesDataset.load_input_objects()
     print()
